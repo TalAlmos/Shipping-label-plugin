@@ -1,0 +1,183 @@
+/* Admin styles for WooCommerce Shipping Labels */
+
+.wsl-label-form {
+    max-width: 800px;
+    margin: 20px 0;
+}
+
+.wsl-order-details {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.wsl-address {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.wsl-field {
+    margin-bottom: 15px;
+}
+
+.wsl-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.wsl-field input {
+    width: 100%;
+    max-width: 300px;
+}
+
+.wsl-field textarea {
+    width: 100%;
+    max-width: 300px;
+}
+
+.wsl-rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.wsl-rates-table th, 
+.wsl-rates-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.wsl-rates-table th {
+    background-color: #f5f5f5;
+}
+
+.wsl-rates-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Added rule for the "Ship" button to include a PNG icon */
+a.ship-label {
+    /* Assuming ship-icon.png is located in assets/images */
+    background: url('../images/ship-icon.png') no-repeat left center;
+    background-size: 16px 16px; /* Optimal width and height */
+    padding-left: 20px; /* Ensure there's space for the icon and text */
+    display: inline-block;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+/* Added styles for addresses wrapper to display Ship To and Ship From addresses side by side */
+.wsl-addresses-wrapper {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0; /* adjust the vertical spacing as needed */
+}
+
+.wsl-addresses-wrapper > div {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd; /* Similar styling to the existing address blocks */
+    background: #f9f9f9;
+}
+
+/* Reduce spacing between lines in the Ship From address */
+.ship-from p {
+    margin: 2px 0;
+}
+
+/* Reduce spacing between lines in the Ship To address */
+.ship-to p {
+    margin: 2px 0;
+}
+
+/* Address editing styles */
+.ship-from h3, .ship-to h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-address {
+    font-size: 12px !important;
+    height: auto !important;
+    padding: 2px 8px !important;
+}
+
+.wsl-field {
+    margin-bottom: 10px;
+}
+
+.address-edit .wsl-field label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.address-edit .wsl-field input {
+    width: 100%;
+}
+
+.wsl-field-actions {
+    margin-top: 12px;
+    text-align: right;
+}
+
+.save-address, .cancel-edit {
+    font-size: 12px !important;
+    height: auto !important;
+    padding: 3px 10px !important;
+}
+
+.cancel-edit {
+    margin-left: 5px !important;
+}
+
+/* Package Type selection styling */
+.wsl-package-selection {
+    margin-bottom: 15px;
+}
+
+.wsl-package-selection label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.wsl-package-selection select {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* Carrier logo styling in shipping options table */
+.carrier-logo {
+    max-height: 30px;
+    max-width: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+.wsl-rates-table td:nth-child(2) {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Make DHL icon specifically 30% larger than other carrier logos */
+img[src*="DHL.png"].carrier-logo {
+    transform: scale(1.3);
+    margin: 5px auto; /* Add some margin to prevent overlap with cell borders */
+}
+
+/* Style the select column */
+.wsl-rates-table td:first-child {
+    text-align: center;
+    vertical-align: middle;
+    width: 40px; /* Set a fixed width for the radio button column */
+}

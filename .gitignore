@@ -1,0 +1,29 @@
+# WordPress core files
+wp-admin/
+wp-includes/
+/index.php
+/license.txt
+/readme.html
+/wp-*.php
+/xmlrpc.php
+
+# Configuration files
+wp-config.php
+
+# Uploads directory
+wp-content/uploads/
+
+# Plugins (except our plugin)
+wp-content/plugins/*
+!wp-content/plugins/woo-shipping-labels/
+
+# Themes
+wp-content/themes/*
+
+# Cache and logs
+wp-content/cache/
+wp-content/debug.log
+
+# Node modules and build files
+node_modules/
+build/
