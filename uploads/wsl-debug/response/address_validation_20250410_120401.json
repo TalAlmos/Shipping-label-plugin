@@ -1,0 +1,95 @@
+{
+    "raw_response": {
+        "headers": {},
+        "body": "{\"transactionId\":\"c92c2356-3ead-4ceb-901f-869c121a54d4\",\"output\":{\"resolvedAddresses\":[{\"clientReferenceId\":\"Order_1744286641\",\"streetLinesToken\":[\"4924 AVENIDA ORIENTE\"],\"cityToken\":[{\"changed\":false,\"value\":\"TARZANA\"}],\"stateOrProvinceCode\":\"CA\",\"stateOrProvinceCodeToken\":{\"changed\":false,\"value\":\"CA\"},\"postalCodeToken\":{\"changed\":true,\"value\":\"91356-4631\"},\"parsedPostalCode\":{\"base\":\"91356\",\"addOn\":\"4631\",\"deliveryPoint\":\"24\"},\"countryCode\":\"US\",\"classification\":\"RESIDENTIAL\",\"ruralRouteHighwayContract\":false,\"generalDelivery\":false,\"customerMessages\":[],\"normalizedStatusNameDPV\":true,\"standardizedStatusNameMatchSource\":\"Postal\",\"resolutionMethodName\":\"USPS_VALIDATE\",\"attributes\":{\"POBox\":\"false\",\"POBoxOnlyZIP\":\"false\",\"SplitZIP\":\"false\",\"SuiteRequiredButMissing\":\"false\",\"InvalidSuiteNumber\":\"false\",\"ResolutionInput\":\"RAW_ADDRESS\",\"DPV\":\"true\",\"ResolutionMethod\":\"USPS_VALIDATE\",\"DataVintage\":\"May 2023\",\"MatchSource\":\"Postal\",\"CountrySupported\":\"true\",\"ValidlyFormed\":\"true\",\"Matched\":\"true\",\"Resolved\":\"true\",\"Inserted\":\"false\",\"MultiUnitBase\":\"false\",\"ZIP11Match\":\"true\",\"ZIP4Match\":\"true\",\"UniqueZIP\":\"false\",\"StreetAddress\":\"true\",\"RRConversion\":\"false\",\"ValidMultiUnit\":\"false\",\"AddressType\":\"STANDARDIZED\",\"AddressPrecision\":\"STREET_ADDRESS\",\"MultipleMatches\":\"false\"}}]}}",
+        "response": {
+            "code": 200,
+            "message": "OK"
+        },
+        "cookies": [
+            {
+                "name": "fdx_bman",
+                "value": "ab1738ba11c047bab47bdd0d4588fe38",
+                "expires": null,
+                "path": "\/",
+                "domain": "apis-sandbox.fedex.com",
+                "port": null,
+                "host_only": false
+            }
+        ],
+        "filename": null,
+        "http_response": {
+            "data": null,
+            "headers": null,
+            "status": null
+        }
+    },
+    "body": {
+        "transactionId": "c92c2356-3ead-4ceb-901f-869c121a54d4",
+        "output": {
+            "resolvedAddresses": [
+                {
+                    "clientReferenceId": "Order_1744286641",
+                    "streetLinesToken": [
+                        "4924 AVENIDA ORIENTE"
+                    ],
+                    "cityToken": [
+                        {
+                            "changed": false,
+                            "value": "TARZANA"
+                        }
+                    ],
+                    "stateOrProvinceCode": "CA",
+                    "stateOrProvinceCodeToken": {
+                        "changed": false,
+                        "value": "CA"
+                    },
+                    "postalCodeToken": {
+                        "changed": true,
+                        "value": "91356-4631"
+                    },
+                    "parsedPostalCode": {
+                        "base": "91356",
+                        "addOn": "4631",
+                        "deliveryPoint": "24"
+                    },
+                    "countryCode": "US",
+                    "classification": "RESIDENTIAL",
+                    "ruralRouteHighwayContract": false,
+                    "generalDelivery": false,
+                    "customerMessages": [],
+                    "normalizedStatusNameDPV": true,
+                    "standardizedStatusNameMatchSource": "Postal",
+                    "resolutionMethodName": "USPS_VALIDATE",
+                    "attributes": {
+                        "POBox": "false",
+                        "POBoxOnlyZIP": "false",
+                        "SplitZIP": "false",
+                        "SuiteRequiredButMissing": "false",
+                        "InvalidSuiteNumber": "false",
+                        "ResolutionInput": "RAW_ADDRESS",
+                        "DPV": "true",
+                        "ResolutionMethod": "USPS_VALIDATE",
+                        "DataVintage": "May 2023",
+                        "MatchSource": "Postal",
+                        "CountrySupported": "true",
+                        "ValidlyFormed": "true",
+                        "Matched": "true",
+                        "Resolved": "true",
+                        "Inserted": "false",
+                        "MultiUnitBase": "false",
+                        "ZIP11Match": "true",
+                        "ZIP4Match": "true",
+                        "UniqueZIP": "false",
+                        "StreetAddress": "true",
+                        "RRConversion": "false",
+                        "ValidMultiUnit": "false",
+                        "AddressType": "STANDARDIZED",
+                        "AddressPrecision": "STREET_ADDRESS",
+                        "MultipleMatches": "false"
+                    }
+                }
+            ]
+        }
+    }
+}

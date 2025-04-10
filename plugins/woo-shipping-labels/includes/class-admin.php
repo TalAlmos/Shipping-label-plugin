@@ -111,4 +111,97 @@ class WSL_Admin {
         
         echo '</div>';
     }
+
+    // Update this in your render_label_form method or wherever you display addresses
+    public function render_address_section($order) {
+        // Get shipping and billing addresses from order
+        $shipping_address = $order->get_address('shipping');
+        $billing_address = $order->get_billing();
+        
+        ?>
+        <div class="wsl-addresses">
+            <div class="wsl-address-from panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?php _e('Ship From Address', 'woo-shipping-labels'); ?>
+                        <span class="button-group">
+                            <button type="button" class="button wsl-validate-address" data-address-type="from">
+                                <?php _e('Validate', 'woo-shipping-labels'); ?>
+                            </button>
+                            <button type="button" class="button edit-address" data-address-type="from">
+                                <?php _e('Edit', 'woo-shipping-labels'); ?>
+                            </button>
+                        </span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="wsl-address-data" id="wsl-ship-from">
+                        <?php echo $this->format_address(get_option('wsl_from_address', array())); ?>
+                    </div>
+                    <div class="wsl-validation-result wsl-from-validation-result">
+                        <!-- Validation results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wsl-address-to panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?php _e('Ship To Address', 'woo-shipping-labels'); ?>
+                        <span class="button-group">
+                            <button type="button" class="button wsl-validate-address" data-address-type="to">
+                                <?php _e('Validate', 'woo-shipping-labels'); ?>
+                            </button>
+                            <button type="button" class="button edit-address" data-address-type="to">
+                                <?php _e('Edit', 'woo-shipping-labels'); ?>
+                            </button>
+                        </span>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="wsl-address-data" id="wsl-ship-to">
+                        <?php echo $this->format_address($shipping_address); ?>
+                    </div>
+                    <div class="wsl-validation-result wsl-to-validation-result">
+                        <!-- Validation results will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+
+    // Helper function to format address for display
+    private function format_address($address) {
+        $formatted = '';
+        
+        if (!empty($address['address_1'])) {
+            $formatted .= '<div class="address-line">' . esc_html($address['address_1']) . '</div>';
+        }
+        
+        if (!empty($address['address_2'])) {
+            $formatted .= '<div class="address-line">' . esc_html($address['address_2']) . '</div>';
+        }
+        
+        $city_line = '';
+        if (!empty($address['city'])) {
+            $city_line .= esc_html($address['city']);
+        }
+        
+        if (!empty($address['state'])) {
+            $city_line .= !empty($city_line) ? ', ' . esc_html($address['state']) : esc_html($address['state']);
+        }
+        
+        if (!empty($address['postcode'])) {
+            $city_line .= ' ' . esc_html($address['postcode']);
+        }
+        
+        if (!empty($city_line)) {
+            $formatted .= '<div class="address-line">' . $city_line . '</div>';
+        }
+        
+        if (!empty($address['country'])) {
+            $formatted .= '<div class="address-line">' . esc_html(WC()->countries->get_countries()[$address['country']]) . '</div>';
+        }
+        
+        return $formatted;
+    }
 }

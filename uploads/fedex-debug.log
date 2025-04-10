@@ -1,0 +1,309 @@
+=== FedEx API Request ===
+Endpoint: https://apis-sandbox.fedex.com/ship/v1
+Account Number: 208209676
+API Key: l7348...
+Mode: TEST
+Service Type: INTERNATIONAL_PRIORITY
+Request Payload: {
+    "index": "16",
+    "requestedShipment": {
+        "shipper": {
+            "contact": {
+                "personName": "Shipping Label Dev",
+                "phoneNumber": "0000000000",
+                "emailAddress": "tal.almos@gmail.com"
+            },
+            "address": {
+                "streetLines": [
+                    "4924 N Avenida Oriente"
+                ],
+                "city": "Tarzana",
+                "stateOrProvinceCode": "CA",
+                "postalCode": "91356",
+                "countryCode": "US"
+            }
+        },
+        "recipients": [
+            {
+                "contact": {
+                    "personName": "Erez Almos",
+                    "phoneNumber": "0528392371",
+                    "emailAddress": "tal.almos@gmail.com"
+                },
+                "address": {
+                    "streetLines": [
+                        "Yitskhak Rabin St 14",
+                        "72,17"
+                    ],
+                    "city": "Kiryat Ono",
+                    "stateOrProvinceCode": "",
+                    "postalCode": "5551019",
+                    "countryCode": "IL",
+                    "residential": true
+                }
+            }
+        ],
+        "shipDatestamp": "2025-04-09",
+        "serviceType": "INTERNATIONAL_PRIORITY",
+        "packagingType": "YOUR_PACKAGING",
+        "pickupType": "USE_SCHEDULED_PICKUP",
+        "blockInsightVisibility": false,
+        "shippingChargesPayment": {
+            "paymentType": "SENDER",
+            "payor": {
+                "responsibleParty": {
+                    "accountNumber": {
+                        "value": "208209676"
+                    }
+                }
+            }
+        },
+        "labelSpecification": {
+            "labelFormatType": "COMMON2D",
+            "imageType": "PDF",
+            "labelStockType": "PAPER_85X11_TOP_HALF_LABEL"
+        },
+        "requestedPackageLineItems": [
+            {
+                "weight": {
+                    "units": "LB",
+                    "value": "0.1"
+                },
+                "dimensions": {
+                    "length": 10,
+                    "width": 10,
+                    "height": 10,
+                    "units": "IN"
+                },
+                "itemDescriptionForClearance": "WooCommerce Order #16",
+                "customerReferences": [
+                    {
+                        "customerReferenceType": "CUSTOMER_REFERENCE",
+                        "value": "16"
+                    }
+                ]
+            }
+        ],
+        "customsClearanceDetail": {
+            "dutiesPayment": {
+                "payor": {
+                    "responsibleParty": {
+                        "address": {
+                            "countryCode": "US"
+                        },
+                        "accountNumber": {
+                            "value": "208209676"
+                        }
+                    }
+                },
+                "paymentType": "SENDER"
+            },
+            "commodities": [
+                {
+                    "unitPrice": {
+                        "amount": "32",
+                        "currency": "USD"
+                    },
+                    "numberOfPieces": "1",
+                    "quantity": "1",
+                    "customsValue": {
+                        "amount": 32,
+                        "currency": "USD"
+                    },
+                    "countryOfManufacture": "US",
+                    "name": "Sterodex",
+                    "description": "Sterodex",
+                    "weight": {
+                        "units": "KG",
+                        "value": ""
+                    },
+                    "quantityUnits": "PCS"
+                }
+            ],
+            "documentContent": "NON_DOCUMENTS",
+            "commercialInvoice": {
+                "shipmentPurpose": "SOLD"
+            }
+        },
+        "shippingDocumentSpecification": {
+            "shippingDocumentTypes": [
+                "COMMERCIAL_INVOICE"
+            ],
+            "commercialInvoiceDetail": {
+                "documentFormat": {
+                    "stockType": "PAPER_LETTER",
+                    "dispositions": [
+                        {
+                            "dispositionType": "RETURNED"
+                        }
+                    ],
+                    "locale": "en_US",
+                    "docType": "PDF"
+                }
+            }
+        }
+    },
+    "accountNumber": {
+        "value": "208209676"
+    }
+}
+
+=== FedEx API Request ===
+Endpoint: https://apis-sandbox.fedex.com/ship/v1
+Account Number: 208209676
+API Key: l7348...
+Mode: TEST
+Service Type: INTERNATIONAL_PRIORITY
+Request Payload: {
+    "index": "16",
+    "requestedShipment": {
+        "shipper": {
+            "contact": {
+                "personName": "Shipping Label Dev",
+                "phoneNumber": "0000000000",
+                "emailAddress": "tal.almos@gmail.com"
+            },
+            "address": {
+                "streetLines": [
+                    "4924 N Avenida Oriente"
+                ],
+                "city": "Tarzana",
+                "stateOrProvinceCode": "CA",
+                "postalCode": "91356",
+                "countryCode": "US"
+            }
+        },
+        "recipients": [
+            {
+                "contact": {
+                    "personName": "Erez Almos",
+                    "phoneNumber": "0528392371",
+                    "emailAddress": "tal.almos@gmail.com"
+                },
+                "address": {
+                    "streetLines": [
+                        "Yitskhak Rabin St 14",
+                        "72,17"
+                    ],
+                    "city": "Kiryat Ono",
+                    "stateOrProvinceCode": "",
+                    "postalCode": "5551019",
+                    "countryCode": "IL",
+                    "residential": true
+                }
+            }
+        ],
+        "shipDatestamp": "2025-04-09",
+        "serviceType": "INTERNATIONAL_PRIORITY",
+        "packagingType": "YOUR_PACKAGING",
+        "pickupType": "USE_SCHEDULED_PICKUP",
+        "blockInsightVisibility": false,
+        "shippingChargesPayment": {
+            "paymentType": "SENDER",
+            "payor": {
+                "responsibleParty": {
+                    "accountNumber": {
+                        "value": "208209676"
+                    }
+                }
+            }
+        },
+        "labelSpecification": {
+            "labelFormatType": "COMMON2D",
+            "imageType": "PDF",
+            "labelStockType": "PAPER_85X11_TOP_HALF_LABEL"
+        },
+        "requestedPackageLineItems": [
+            {
+                "weight": {
+                    "units": "LB",
+                    "value": "0.1"
+                },
+                "dimensions": {
+                    "length": 10,
+                    "width": 10,
+                    "height": 10,
+                    "units": "IN"
+                },
+                "itemDescriptionForClearance": "WooCommerce Order #16",
+                "customerReferences": [
+                    {
+                        "customerReferenceType": "CUSTOMER_REFERENCE",
+                        "value": "16"
+                    }
+                ]
+            }
+        ],
+        "customsClearanceDetail": {
+            "dutiesPayment": {
+                "payor": {
+                    "responsibleParty": {
+                        "address": {
+                            "countryCode": "US"
+                        },
+                        "accountNumber": {
+                            "value": "208209676"
+                        }
+                    }
+                },
+                "paymentType": "SENDER"
+            },
+            "commodities": [
+                {
+                    "unitPrice": {
+                        "amount": "32",
+                        "currency": "USD"
+                    },
+                    "numberOfPieces": "1",
+                    "quantity": "1",
+                    "customsValue": {
+                        "amount": 32,
+                        "currency": "USD"
+                    },
+                    "countryOfManufacture": "US",
+                    "name": "Sterodex",
+                    "description": "Sterodex",
+                    "weight": {
+                        "units": "KG",
+                        "value": ""
+                    },
+                    "quantityUnits": "PCS"
+                }
+            ],
+            "documentContent": "NON_DOCUMENTS",
+            "commercialInvoice": {
+                "shipmentPurpose": "SOLD"
+            }
+        },
+        "shippingDocumentSpecification": {
+            "shippingDocumentTypes": [
+                "COMMERCIAL_INVOICE"
+            ],
+            "commercialInvoiceDetail": {
+                "documentFormat": {
+                    "stockType": "PAPER_LETTER",
+                    "dispositions": [
+                        {
+                            "dispositionType": "RETURNED"
+                        }
+                    ],
+                    "locale": "en_US",
+                    "docType": "PDF"
+                }
+            }
+        }
+    },
+    "accountNumber": {
+        "value": "208209676"
+    }
+}
+=== Request Headers ===
+{
+    "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJDWFMtVFAiXSwiUGF5bG9hZCI6eyJjbGllbnRJZGVudGl0eSI6eyJjbGllbnRLZXkiOiJsNzM0ODk4NGQ5ZjM5OTQ2MTJiNzU1ODRhN2UyZWI1Zjk1In0sImF1dGhlbnRpY2F0aW9uUmVhbG0iOiJDTUFDIiwiYWRkaXRpb25hbElkZW50aXR5Ijp7InRpbWVTdGFtcCI6IjA5LUFwci0yMDI1IDA1OjE4OjMxIEVTVCIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJhcGltb2RlIjoiU2FuZGJveCIsImN4c0lzcyI6Imh0dHBzOi8vY3hzYXV0aHNlcnZlci1zdGFnaW5nLmFwcC5wYWFzLmZlZGV4LmNvbS90b2tlbi9vYXV0aDIifSwicGVyc29uYVR5cGUiOiJEaXJlY3RJbnRlZ3JhdG9yX0IyQiJ9LCJleHAiOjE3NDQxOTc1MTEsImp0aSI6ImYyZDhhMjk5LWI0NDEtNDU0Mi1iYTgzLWNhOWU3MzE0ZGU2YSJ9.rjQcUZ5EVrqFtPWctUxGdFrorvJ1Z_YNaYG02fmoeZJgkY6jqdvk7-5vVsSqB_8UWun4sJtuLVZcLsMsn_E2rIqxc4nJT6-j1CDzla_d5gTjJtNzIbTRTqLfoV6QXIESobVF8eWnMGC7v3hrbRhg0MdTD39JhDCaeKrrXuvN6wBPO0Xo2eSwLyr01nV5QM-aGNwlitZd4p7qeA2hQTEHyydfjiiS8Rnf9QH9QqsW4Hl1q7ntEabvfkF8bW2wVKp53VW7piGAy5lOP5vbGw85GD5AS1uwzUqFI-lieOt4l2B41PIQeRjhl9fnWHSzWYgCUGaAGnpaWqtzSPmt44kiCTj2-pSMW8GVGP5VYFEzieCqcrKayACs5J0yZTvSI9hm98tdt-QMk_KCbMwWQeLpXs3M_2rEkTx7zS6pboNj0qetb9s2gmQZLSSpn5qTjQBp8eHv_f3ml69eDPjz653Rdj6cDiE4HuN1xfBwxK3yPASEQ9Px24FrkrRBIqO5csUrJ87O75eshpi6qNoyLdWPKjCaEua6CBNSAQhtnNneApmlTABWFEIucp5nj-8ordwtIKQXReD6meJnepBLAYGdiGioxvFN8-gka0NdzZmPqUognyUHDO9tkyYjQCN00mMDQcg2SDPAL-ApXKT_BDDYyE8GJ7592cjAGLv-sD4h_Cg",
+    "Content-Type": "application\/json",
+    "X-locale": "en_US"
+}
+=== FedEx API Response ===
+Status Code: 422
+Response Body: {"transactionId":"a378c036-e224-4fca-82a5-bbbe0dbf2c6b","errors":[{"code":"INVALID.INPUT.EXCEPTION","message":"Validation failed for object='shipShipmentInputVO'. Error count: 1","parameterList":[{"key":"NotNull.shipShipmentInputVO.labelResponseOptions","value":"labelResponseOptions cannot be null"}]}]}
+

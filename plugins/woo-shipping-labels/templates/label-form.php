@@ -18,7 +18,10 @@ if (!defined('WPINC')) {
         <div class="ship-from">
             <h3>
                 <?php _e('Ship From Address', 'woo-shipping-labels'); ?>
-                <button type="button" class="button edit-address" data-target="ship-from-display" data-form="ship-from-edit"><?php _e('Edit', 'woo-shipping-labels'); ?></button>
+                <span class="button-group">
+                    <button type="button" class="button edit-address" data-target="ship-from-display" data-form="ship-from-edit"><?php _e('Edit', 'woo-shipping-labels'); ?></button>
+                    <button type="button" class="button wsl-validate-address" data-address-type="from"><?php _e('Validate', 'woo-shipping-labels'); ?></button>
+                </span>
             </h3>
             <div id="ship-from-display" class="address-display">
             <?php
@@ -63,6 +66,9 @@ if (!defined('WPINC')) {
                 }
             ?>
             </div>
+            <div class="wsl-validation-result wsl-from-validation-result">
+                <!-- Validation results will be displayed here -->
+            </div>
             <div id="ship-from-edit" class="address-edit" style="display:none;">
                 <div class="wsl-field">
                     <label for="from_business_name"><?php _e('Business Name:', 'woo-shipping-labels'); ?></label>
@@ -101,7 +107,10 @@ if (!defined('WPINC')) {
         <div class="ship-to">
             <h3>
                 <?php _e('Ship To Address', 'woo-shipping-labels'); ?>
-                <button type="button" class="button edit-address" data-target="ship-to-display" data-form="ship-to-edit"><?php _e('Edit', 'woo-shipping-labels'); ?></button>
+                <span class="button-group">
+                    <button type="button" class="button edit-address" data-target="ship-to-display" data-form="ship-to-edit"><?php _e('Edit', 'woo-shipping-labels'); ?></button>
+                    <button type="button" class="button wsl-validate-address" data-address-type="to"><?php _e('Validate', 'woo-shipping-labels'); ?></button>
+                </span>
             </h3>
             <div id="ship-to-display" class="address-display">
             <?php 
@@ -151,6 +160,9 @@ if (!defined('WPINC')) {
                     echo '<p><em>' . esc_html($shipping_country) . '</em></p>';
                 }
             ?>
+            </div>
+            <div class="wsl-validation-result wsl-to-validation-result">
+                <!-- Validation results will be displayed here -->
             </div>
             <div id="ship-to-edit" class="address-edit" style="display:none;">
                 <div class="wsl-field">

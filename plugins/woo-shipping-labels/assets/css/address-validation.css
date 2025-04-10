@@ -1,0 +1,255 @@
+/* Address validation styling */
+.wsl-address-container {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f8f8;
+    border-radius: 4px;
+}
+
+.wsl-validate-address {
+    margin-top: 10px !important;
+}
+
+.wsl-validation-result {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.wsl-loading {
+    display: block;
+    padding: 5px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Success state */
+.wsl-validation-success {
+    background-color: #ecf8ed;
+    border: 1px solid #b6e0c1;
+    color: #2c7a3f;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.wsl-validation-success .dashicons {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Error state */
+.wsl-validation-error {
+    background-color: #fbeaea;
+    border: 1px solid #f3ccd0;
+    color: #cc4b59;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.wsl-validation-error .dashicons {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Address updated message */
+.wsl-address-updated {
+    background-color: #e5f5fa;
+    border: 1px solid #b3d7e5;
+    color: #0075a3;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.wsl-address-updated .dashicons {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Address classification */
+.wsl-address-classification {
+    margin-bottom: 15px;
+    padding: 5px 10px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.classification-label {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.classification-value {
+    text-transform: capitalize;
+}
+
+/* Standardized address */
+.wsl-standardized-address {
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+
+.wsl-standardized-address h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.standardized-address-content {
+    font-family: monospace;
+    background: #fff;
+    padding: 10px 15px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
+
+.standardized-address-content p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+
+.wsl-use-standardized {
+    margin-top: 5px !important;
+}
+
+/* Corrections list */
+.wsl-address-corrections {
+    margin-bottom: 20px;
+}
+
+.wsl-address-corrections h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+.wsl-address-corrections ul {
+    margin-left: 25px;
+    list-style-type: disc;
+}
+
+.wsl-address-corrections li {
+    color: #d63638;
+    margin-bottom: 5px;
+}
+
+/* Actions */
+.wsl-address-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.use-standardized-address {
+    background-color: #4caf50 !important;
+    color: white !important;
+    border-color: #388e3c !important;
+}
+
+.use-standardized-address:hover {
+    background-color: #388e3c !important;
+}
+
+/* Alerts */
+.wsl-validation-alerts {
+    background-color: #fff8e5;
+    border: 1px solid #f7e5b2;
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 4px;
+}
+
+.wsl-validation-alerts h4 {
+    color: #856404;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.wsl-validation-alerts ul {
+    margin-left: 25px;
+    list-style-type: disc;
+}
+
+.wsl-validation-alerts li {
+    color: #856404;
+    margin-bottom: 5px;
+}
+
+/* Loading state for button */
+.wsl-validate-address.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.wsl-validate-address.loading:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #000;
+    border-radius: 50%;
+    animation: wsl-spinner 1s linear infinite;
+}
+
+@keyframes wsl-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Add these styles to your existing CSS file */
+
+.panel-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.button-group .button {
+    margin: 0 !important;
+    height: 30px !important;
+    line-height: 28px !important;
+}
+
+.wsl-validate-address {
+    margin-right: 5px !important;
+}
+
+/* Make sure our validation result area doesn't disrupt the layout */
+.wsl-validation-result {
+    clear: both;
+    margin-top: 15px;
+}
+
+/* Panel title with consistent layout */
+.panel-title, h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 

@@ -1,0 +1,20 @@
+{
+    "inEffectAsOfTimestamp": "2025-04-10",
+    "validateAddressControlParameters": {
+        "includeResolutionTokens": true
+    },
+    "addressesToValidate": [
+        {
+            "address": {
+                "streetLines": [
+                    "4924 N Avenida Oriente"
+                ],
+                "city": "Tarzana",
+                "stateOrProvinceCode": "CA",
+                "postalCode": "91356",
+                "countryCode": "US"
+            },
+            "clientReferenceId": "Order_1744288809"
+        }
+    ]
+}
