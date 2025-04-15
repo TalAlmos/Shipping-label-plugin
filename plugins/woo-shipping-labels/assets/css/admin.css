@@ -181,3 +181,209 @@ img[src*="DHL.png"].carrier-logo {
     vertical-align: middle;
     width: 40px; /* Set a fixed width for the radio button column */
 }
+
+/* Settings page styles */
+.settings-tab {
+    margin-top: 20px;
+}
+
+.carrier-settings-accordion h3 {
+    background: #f5f5f5;
+    padding: 10px 15px;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.carrier-settings-content {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    margin-bottom: 15px;
+}
+
+.add-mapping-section {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e5e5e5;
+}
+
+#country-mappings-table {
+    margin-top: 20px;
+}
+
+.carrier-checkbox {
+    margin-bottom: 15px;
+}
+
+.carrier-checkbox h4 {
+    margin: 0 0 10px 0;
+}
+
+.no-mappings td {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+/* Date input styling */
+.wsl-date-input-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+}
+
+.wsl-date-input {
+    width: 100%;
+    padding-right: 30px; /* Make room for the calendar icon */
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Custom calendar icon - only shows if browser doesn't provide one */
+.wsl-calendar-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/></svg>');
+    background-repeat: no-repeat;
+}
+
+/* Hide the default calendar icon in some browsers like Chrome */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+/* Package Weight input styling - adjusted proportions */
+.wsl-weight-input-group {
+    display: flex;
+    width: 300px;
+    align-items: center;
+}
+
+.wsl-weight-input-group input[type="number"] {
+    flex: 3; /* Increased from 1 to give the input more space */
+    min-width: 180px; /* Ensure minimum width */
+    margin-right: 5px;
+    text-align: left;
+}
+
+.wsl-weight-input-group select {
+    flex: 1;
+    min-width: 60px; /* Set minimum width */
+    max-width: 80px; /* Limit maximum width */
+}
+
+/* Declared Value input styling - adjusted for new order */
+.wsl-currency-input-group {
+    display: flex;
+    width: 300px;
+    align-items: center;
+}
+
+.wsl-currency-input-group input[type="number"] {
+    flex: 3;
+    min-width: 180px;
+    margin-right: 5px;
+    text-align: left;
+}
+
+.wsl-currency-input-group select {
+    flex: 1;
+    min-width: 70px;
+    max-width: 90px;
+}
+
+/* Description text under inputs */
+.wsl-form-field .description {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* Consistent input heights across different types */
+.wsl-date-input,
+.wsl-weight-input-group input,
+.wsl-weight-input-group select,
+.wsl-currency-input-group input,
+.wsl-currency-input-group select {
+    height: 32px;
+    box-sizing: border-box;
+}
+
+/* Enhanced UOM (Unit of Measure) field styling */
+.wsl-weight-input-group select,
+.wsl-currency-input-group select {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 8px;
+    font-size: 14px;
+    /* Remove these lines which are causing the duplicate arrows */
+    /* appearance: menulist; */ 
+    /* -webkit-appearance: menulist; */
+    /* -moz-appearance: menulist; */
+}
+
+/* Use a single, consistent approach for the dropdown arrow */
+.wsl-weight-input-group select,
+.wsl-currency-input-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%23555" d="M3 4h6L6 8z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 24px; /* Make room for the arrow */
+}
+
+/* Hover effect */
+.wsl-weight-input-group select:hover,
+.wsl-currency-input-group select:hover {
+    border-color: #bbb;
+}
+
+/* Focus effect */
+.wsl-weight-input-group select:focus,
+.wsl-currency-input-group select:focus {
+    border-color: #0073aa;
+    box-shadow: 0 0 0 1px #0073aa;
+    outline: none;
+}
+
+/* Center text in dropdown selects */
+.wsl-weight-input-group select,
+.wsl-currency-input-group select {
+    text-align: center; /* Center text horizontally */
+    vertical-align: middle; /* Center text vertically */
+    padding-left: 0; /* Remove left padding for better centering */
+    padding-right: 16px; /* Keep space for the dropdown arrow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adjust icon position */
+.wsl-weight-input-group select,
+.wsl-currency-input-group select {
+    background-position: right 4px center; /* Move arrow closer to right edge */
+}
+
+/* Add additional font styling for better readability */
+.wsl-weight-input-group select,
+.wsl-currency-input-group select {
+    font-weight: 500; /* Slightly bolder */
+    font-size: 10px;
+    letter-spacing: 0.5px; /* Better letter spacing */
+}

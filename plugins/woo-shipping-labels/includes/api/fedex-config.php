@@ -25,13 +25,17 @@ return array(
             'production' => 'https://apis.fedex.com/rate/v1/rates/quotes',
             'sandbox' => 'https://apis-sandbox.fedex.com/rate/v1/rates/quotes',
         ),
+        'ship' => array(
+            'production' => 'https://apis.fedex.com/ship/v1/shipments',
+            'sandbox' => 'https://apis-sandbox.fedex.com/ship/v1/shipments',
+        ),
     ),
     
     // Authentication credentials
     'credentials' => array(
         'client_id' => 'l7348984d9f3994612b75584a7e2eb5f95',     // Your FedEx API Key
         'client_secret' => 'ca7b1db3c5d44f06bbc5fbda921a6e05', // Your FedEx API Secret
-        'account_number' => '208209676', // Your FedEx Account Number
+        'account_number' => '740561073', // Your FedEx Account Number
     ),
     
     // Environment setting ('sandbox' or 'production')
