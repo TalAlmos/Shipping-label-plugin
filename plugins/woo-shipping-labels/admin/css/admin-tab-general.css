@@ -1,0 +1,116 @@
+/**
+ * General tab specific styles for Shipping Labels
+ */
+
+/* General settings card layout */
+.wsl-general-settings {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .wsl-general-settings {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Store information section */
+.wsl-store-info {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wsl-store-info h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Default values section */
+.wsl-default-values {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.wsl-default-values h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* API credentials section */
+.wsl-api-credentials {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wsl-api-credentials h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* General settings fields */
+.wsl-general-tab .wsl-form-field {
+    margin-bottom: 15px;
+}
+
+/* API Key field */
+.wsl-api-key-field {
+    position: relative;
+}
+
+.wsl-api-key-field input[type="password"] {
+    padding-right: 40px;
+}
+
+.wsl-toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+/* Debug settings */
+.wsl-debug-settings {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 20px;
+}
+
+.wsl-debug-settings h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.wsl-debug-toggle {
+    margin-bottom: 0;
+}
+
+.wsl-debug-options {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    display: none;
+}
+
+.wsl-debug-active .wsl-debug-options {
+    display: block;
+}

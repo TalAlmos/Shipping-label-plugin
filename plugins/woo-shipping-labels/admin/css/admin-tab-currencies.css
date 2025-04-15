@@ -1,0 +1,55 @@
+/**
+ * Currencies tab specific styles
+ */
+
+/* Currency Table Styles */
+.wsl-currency-table {
+    margin-top: 15px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wsl-currency-table th,
+.wsl-currency-table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+}
+
+.wsl-currency-table th {
+    font-weight: 600;
+    background: #f9f9f9;
+}
+
+.wsl-currency-table input[type="text"] {
+    width: 100%;
+}
+
+.wsl-currency-table input[type="checkbox"],
+.wsl-currency-table input[type="radio"] {
+    margin: 0;
+}
+
+/* Currency action buttons */
+.wsl-currency-actions {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+/* Add currency button */
+.wsl-add-currency {
+    margin-right: 10px;
+}
+
+/* Currency modal specific styles */
+#wsl-add-currency-modal .wsl-form-field {
+    margin-bottom: 15px;
+}
+
+#wsl-add-currency-modal input#wsl-new-currency-code {
+    width: 80px;
+    text-transform: uppercase;
+    font-weight: bold;
+}

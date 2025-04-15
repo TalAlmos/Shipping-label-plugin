@@ -1,0 +1,71 @@
+/**
+ * Countries tab specific styles
+ */
+
+/* Country cards */
+.wsl-country-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    padding: 15px;
+    position: relative;
+}
+
+.wsl-country-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.wsl-country-card-header h3 {
+    margin: 0;
+}
+
+/* Carrier options */
+.wsl-carrier-option {
+    margin-bottom: 15px;
+}
+
+.wsl-carrier-services {
+    margin-left: 25px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 3px;
+}
+
+.wsl-carrier-services h4 {
+    margin-top: 0;
+}
+
+.wsl-service-options label {
+    display: inline-block;
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+/* Country selector */
+.wsl-country-selector {
+    margin-bottom: 20px;
+}
+
+/* Notices */
+.wsl-empty-notice {
+    padding: 20px;
+    background: #f9f9f9;
+    border-left: 4px solid #ddd;
+}
+
+.wsl-no-carriers-notice {
+    color: #d63638;
+}
+
+/* Loading indicator for services */
+.wsl-loading-services {
+    padding: 10px;
+    font-style: italic;
+    color: #767676;
+}

@@ -18,17 +18,20 @@ class WSL_Admin {
         add_action('wp_ajax_wsl_get_states', array($this, 'ajax_get_states'));
         
         // Add settings page
-        add_action('admin_menu', array($this, 'add_settings_pages'));
+        add_action('admin_menu', array($this, 'add_menu_pages'));
         
         // Register settings
         add_action('admin_init', array($this, 'register_settings'));
         
-        // Register admin assets
-        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
+        // Register admin assets - KEEP ONLY THIS ONE for styles and scripts
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
         
         // Add AJAX handlers
         add_action('wp_ajax_wsl_test_carrier_connection', array($this, 'ajax_test_carrier_connection'));
         add_action('wp_ajax_wsl_get_states', array($this, 'ajax_get_states'));
+        
+        // COMMENTED OUT: redundant style enqueuing
+        // add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles'));
     }
     
     public function init() {
@@ -59,13 +62,17 @@ class WSL_Admin {
         return $actions;
     }
     
+    /**
+     * Add all admin menu pages and submenus
+     * CONSOLIDATED MENU REGISTRATION FUNCTION
+     */
     public function add_menu_pages() {
         // Main menu page
         add_menu_page(
             __('Shipping Labels', 'woo-shipping-labels'),
             __('Shipping Labels', 'woo-shipping-labels'),
             'manage_woocommerce',
-            'wsl-shipping-labels',
+            'wsl-shipping-labels', // Keep the original slug
             array($this, 'render_main_page'),
             'dashicons-shipping',
             56
@@ -91,9 +98,10 @@ class WSL_Admin {
             array($this, 'render_settings_page')
         );
         
+        // REMOVE ANY ADDITIONAL MENU ITEMS FROM THE OLD METHOD
         // Only register FedEx test page for administrators
         if (current_user_can('manage_options')) {
-            add_submenu_page(
+        add_submenu_page(
                 'tools.php',                      // Parent menu (Tools)
                 'FedEx Ship API Test',            // Page title
                 'FedEx Ship API Test',            // Menu title
@@ -1602,13 +1610,9 @@ class WSL_Admin {
         // Get saved currencies
         $currencies = get_option('wsl_currencies', array());
         
-        // Start the section
-        echo '<div class="wsl-settings-section">';
+        echo '<div class="wsl-settings-section wsl-currencies-section">';
         echo '<h2>' . __('Currency Management', 'woo-shipping-labels') . '</h2>';
-        echo '<p class="description">' . __('Configure currencies for international shipping labels and customs forms.', 'woo-shipping-labels') . '</p>';
-        
-        // Hidden fields to identify we're saving currencies
-        echo '<input type="hidden" name="wsl_save_currencies" value="1">';
+        echo '<p class="description">' . __('Configure the currencies available for shipping labels', 'woo-shipping-labels') . '</p>';
         
         // Currency Table
         echo '<table class="widefat wsl-currency-table">';
@@ -1681,7 +1685,7 @@ class WSL_Admin {
         echo '</div>';
         
         // Add Currency Modal
-        echo '<div id="wsl-add-currency-modal" class="wsl-modal" style="display:none;">';
+        echo '<div id="wsl-add-currency-modal" class="wsl-modal">';
         echo '<div class="wsl-modal-content">';
         echo '<div class="wsl-modal-header">';
         echo '<span class="wsl-modal-close">&times;</span>';
@@ -1727,109 +1731,7 @@ class WSL_Admin {
         echo '</div>'; // .wsl-modal-content
         echo '</div>'; // #wsl-add-currency-modal
         
-        // Add inline styles for currency table and modal
-        ?>
-        <style>
-        /* Table Styles */
-        .wsl-currency-table {
-            margin-top: 15px;
-        }
-        .wsl-currency-table input[type="text"] {
-            width: 100%;
-        }
-        .wsl-currency-table th:first-child,
-        .wsl-currency-table td:first-child {
-            width: 80px;
-        }
-        .wsl-currency-table th:nth-child(3),
-        .wsl-currency-table td:nth-child(3),
-        .wsl-currency-table th:nth-child(4),
-        .wsl-currency-table td:nth-child(4) {
-            width: 60px;
-            text-align: center;
-        }
-        .wsl-currency-table td:nth-child(3) input,
-        .wsl-currency-table td:nth-child(4) input {
-            margin: 0;
-        }
-        .wsl-currency-actions {
-            margin-top: 10px;
-        }
-        
-        /* Modal Styles */
-        .wsl-modal {
-            display: none;
-            position: fixed;
-            z-index: 100000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
-        }
-        .wsl-modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
-            padding: 0;
-            border: 1px solid #ddd;
-            width: 500px;
-            max-width: 90%;
-            border-radius: 3px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .wsl-modal-header {
-            padding: 15px 20px;
-            border-bottom: 1px solid #ddd;
-            background: #f5f5f5;
-        }
-        .wsl-modal-header h2 {
-            margin: 0;
-            font-size: 18px;
-        }
-        .wsl-modal-body {
-            padding: 20px;
-        }
-        .wsl-modal-footer {
-            padding: 15px 20px;
-            border-top: 1px solid #ddd;
-            background: #f5f5f5;
-            text-align: right;
-        }
-        .wsl-modal-close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: -5px;
-        }
-        .wsl-modal-close:hover,
-        .wsl-modal-close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .wsl-form-field {
-            margin-bottom: 15px;
-        }
-        .wsl-form-field label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .wsl-form-field input[type="text"] {
-            width: 100%;
-        }
-        .wsl-error-message {
-            color: #dc3232;
-            margin-top: 15px;
-            display: none;
-        }
-        </style>
-        <?php
-        
-        // Add JavaScript for the modal and "Add Currency" functionality
+        // JavaScript for the modal and "Add Currency" functionality
         ?>
         <script type="text/javascript">
         jQuery(document).ready(function($) {
@@ -2404,52 +2306,6 @@ class WSL_Admin {
     }
 
     /**
-     * Add settings pages to WordPress admin menu
-     */
-    public function add_settings_pages() {
-        // Main settings page
-        add_menu_page(
-            __('Shipping Labels', 'woo-shipping-labels'),
-            __('Shipping Labels', 'woo-shipping-labels'),
-            'manage_woocommerce',
-            'wsl-settings',
-            array($this, 'render_settings_page'),
-            'dashicons-shipping',
-            56 // After WooCommerce
-        );
-        
-        // Settings subpage
-        add_submenu_page(
-            'wsl-settings',
-            __('Settings', 'woo-shipping-labels'),
-            __('Settings', 'woo-shipping-labels'),
-            'manage_woocommerce',
-            'wsl-settings',
-            array($this, 'render_settings_page')
-        );
-        
-        // Add Label Creation page
-        add_submenu_page(
-            'wsl-settings',
-            __('Create Label', 'woo-shipping-labels'),
-            __('Create Label', 'woo-shipping-labels'),
-            'manage_woocommerce',
-            'wsl-create-label',
-            array($this, 'render_create_label_page')
-        );
-        
-        // Add Currencies management page
-        add_submenu_page(
-            'wsl-settings',
-            __('Currencies', 'woo-shipping-labels'),
-            __('Currencies', 'woo-shipping-labels'),
-            'manage_woocommerce',
-            'wsl-currencies',
-            array($this, 'render_currencies_page')
-        );
-    }
-
-    /**
      * Render the currencies management page
      */
     public function render_currencies_page() {
@@ -2466,8 +2322,249 @@ class WSL_Admin {
         // Get saved currencies
         $currencies = get_option('wsl_currencies', array());
         
-        // Include currencies management template
-        include plugin_dir_path(__FILE__) . '../admin/partials/currencies-page.php';
+        // Page container
+        echo '<div class="wrap wsl-currencies-page">';
+        echo '<h1>' . __('Currency Management', 'woo-shipping-labels') . '</h1>';
+        
+        echo '<form method="post" action="">';
+        
+        // Currency Table
+        echo '<table class="widefat wsl-currency-table">';
+        echo '<thead>';
+        echo '<tr>';
+        echo '<th>' . __('Code', 'woo-shipping-labels') . '</th>';
+        echo '<th>' . __('Name', 'woo-shipping-labels') . '</th>';
+        echo '<th>' . __('Enabled', 'woo-shipping-labels') . '</th>';
+        echo '<th>' . __('Default', 'woo-shipping-labels') . '</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody id="wsl-currencies-list">';
+        
+        // Display all currencies
+        if (!empty($currencies)) {
+            foreach ($currencies as $code => $currency) {
+                echo '<tr data-code="' . esc_attr($code) . '">';
+                echo '<td>';
+                echo '<input type="hidden" name="wsl_currencies[' . esc_attr($code) . '][code]" value="' . esc_attr($code) . '">';
+                echo esc_html($code);
+                echo '</td>';
+                echo '<td>';
+                echo '<input type="text" name="wsl_currencies[' . esc_attr($code) . '][name]" value="' . esc_attr($currency['name']) . '">';
+                echo '</td>';
+                echo '<td>';
+                echo '<input type="checkbox" name="wsl_currencies[' . esc_attr($code) . '][enabled]" value="1" ' . checked(isset($currency['enabled']) && $currency['enabled'], true, false) . '>';
+                echo '</td>';
+                echo '<td>';
+                echo '<input type="radio" name="wsl_default_currency" value="' . esc_attr($code) . '" ' . checked(isset($currency['default']) && $currency['default'], true, false) . '>';
+                echo '</td>';
+                echo '</tr>';
+            }
+        } else {
+            // If no currencies exist, add some common ones
+            $default_currencies = array(
+                'USD' => array('name' => 'US Dollar', 'default' => true),
+                'EUR' => array('name' => 'Euro'),
+                'GBP' => array('name' => 'British Pound'),
+                'CAD' => array('name' => 'Canadian Dollar'),
+                'AUD' => array('name' => 'Australian Dollar'),
+            );
+            
+            foreach ($default_currencies as $code => $currency) {
+                $is_default = isset($currency['default']) && $currency['default'];
+                
+                echo '<tr data-code="' . esc_attr($code) . '">';
+                echo '<td>';
+                echo '<input type="hidden" name="wsl_currencies[' . esc_attr($code) . '][code]" value="' . esc_attr($code) . '">';
+                echo esc_html($code);
+                echo '</td>';
+                echo '<td>';
+                echo '<input type="text" name="wsl_currencies[' . esc_attr($code) . '][name]" value="' . esc_attr($currency['name']) . '">';
+                echo '</td>';
+                echo '<td>';
+                echo '<input type="checkbox" name="wsl_currencies[' . esc_attr($code) . '][enabled]" value="1" ' . checked($is_default, true, false) . '>';
+                echo '</td>';
+                echo '<td>';
+                echo '<input type="radio" name="wsl_default_currency" value="' . esc_attr($code) . '" ' . checked($is_default, true, false) . '>';
+                echo '</td>';
+                echo '</tr>';
+            }
+        }
+        
+        echo '</tbody>';
+        echo '</table>';
+        
+        // Add Currency button
+        echo '<div class="wsl-currency-actions">';
+        echo '<button type="button" class="button wsl-add-currency">' . __('Add Currency', 'woo-shipping-labels') . '</button>';
+        echo '</div>';
+        
+        echo '<p class="submit">';
+        echo '<input type="submit" name="submit" id="submit" class="button button-primary" value="' . __('Save Changes', 'woo-shipping-labels') . '">';
+        echo '</p>';
+        
+        echo '</form>';
+        
+        // Add Currency Modal
+        echo '<div id="wsl-add-currency-modal" class="wsl-modal">';
+        echo '<div class="wsl-modal-content">';
+        echo '<div class="wsl-modal-header">';
+        echo '<span class="wsl-modal-close">&times;</span>';
+        echo '<h2>' . __('Add New Currency', 'woo-shipping-labels') . '</h2>';
+        echo '</div>';
+        echo '<div class="wsl-modal-body">';
+        
+        // Currency Code
+        echo '<div class="wsl-form-field">';
+        echo '<label for="wsl-new-currency-code">' . __('Currency Code', 'woo-shipping-labels') . '</label>';
+        echo '<input type="text" id="wsl-new-currency-code" maxlength="3" placeholder="USD" />';
+        echo '<p class="description">' . __('3-letter code (e.g., USD, EUR, GBP)', 'woo-shipping-labels') . '</p>';
+        echo '</div>';
+        
+        // Currency Name
+        echo '<div class="wsl-form-field">';
+        echo '<label for="wsl-new-currency-name">' . __('Currency Name', 'woo-shipping-labels') . '</label>';
+        echo '<input type="text" id="wsl-new-currency-name" placeholder="United States Dollar" />';
+        echo '<p class="description">' . __('Full name of the currency', 'woo-shipping-labels') . '</p>';
+        echo '</div>';
+        
+        // Enable Currency
+        echo '<div class="wsl-form-field">';
+        echo '<label for="wsl-new-currency-enabled">' . __('Enable Currency', 'woo-shipping-labels') . '</label>';
+        echo '<input type="checkbox" id="wsl-new-currency-enabled" value="1" />';
+        echo '<p class="description">' . __('Enable this currency for shipping labels', 'woo-shipping-labels') . '</p>';
+        echo '</div>';
+        
+        // Default Currency
+        echo '<div class="wsl-form-field">';
+        echo '<label for="wsl-new-currency-default">' . __('Default Currency', 'woo-shipping-labels') . '</label>';
+        echo '<input type="checkbox" id="wsl-new-currency-default" value="1" />';
+        echo '<p class="description">' . __('Set as default currency for shipping labels', 'woo-shipping-labels') . '</p>';
+        echo '</div>';
+        
+        echo '<div class="wsl-error-message"></div>';
+        
+        echo '</div>'; // .wsl-modal-body
+        echo '<div class="wsl-modal-footer">';
+        echo '<button type="button" class="button button-primary wsl-save-currency">' . __('Add Currency', 'woo-shipping-labels') . '</button>';
+        echo '<button type="button" class="button wsl-cancel-currency">' . __('Cancel', 'woo-shipping-labels') . '</button>';
+        echo '</div>'; // .wsl-modal-footer
+        echo '</div>'; // .wsl-modal-content
+        echo '</div>'; // #wsl-add-currency-modal
+        
+        // REMOVED: Inline styles for currency table and modal - now in admin-tab-currencies.css
+        
+        // Add JavaScript for the modal and "Add Currency" functionality
+        ?>
+        <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            // Open modal when "Add Currency" button is clicked
+            $('.wsl-add-currency').on('click', function() {
+                // Reset form fields
+                $('#wsl-new-currency-code').val('');
+                $('#wsl-new-currency-name').val('');
+                $('#wsl-new-currency-enabled').prop('checked', false);
+                $('#wsl-new-currency-default').prop('checked', false);
+                $('.wsl-error-message').hide().html('');
+                
+                // Open modal
+                $('#wsl-add-currency-modal').show();
+            });
+            
+            // Close modal when "X" is clicked
+            $('.wsl-modal-close').on('click', function() {
+                $('#wsl-add-currency-modal').hide();
+            });
+            
+            // Close modal when "Cancel" button is clicked
+            $('.wsl-cancel-currency').on('click', function() {
+                $('#wsl-add-currency-modal').hide();
+            });
+            
+            // Close modal when clicking outside of it
+            $(window).on('click', function(event) {
+                if ($(event.target).is('#wsl-add-currency-modal')) {
+                    $('#wsl-add-currency-modal').hide();
+                }
+            });
+            
+            // Save currency when "Add Currency" button in modal is clicked
+            $('.wsl-save-currency').on('click', function() {
+                // Get form values
+                var code = $('#wsl-new-currency-code').val().toUpperCase();
+                var name = $('#wsl-new-currency-name').val();
+                var enabled = $('#wsl-new-currency-enabled').is(':checked');
+                var isDefault = $('#wsl-new-currency-default').is(':checked');
+                
+                // Validate form
+                var errors = [];
+                
+                if (!code) {
+                    errors.push('Currency code is required');
+                } else if (code.length !== 3) {
+                    errors.push('Currency code must be exactly 3 letters');
+                }
+                
+                if (!name) {
+                    errors.push('Currency name is required');
+                }
+                
+                // Check if currency already exists
+                if ($('#wsl-currencies-list tr[data-code="' + code + '"]').length) {
+                    errors.push('This currency already exists');
+                }
+                
+                // Display errors if any
+                if (errors.length > 0) {
+                    var errorHtml = '<ul>';
+                    $.each(errors, function(index, error) {
+                        errorHtml += '<li>' + error + '</li>';
+                    });
+                    errorHtml += '</ul>';
+                    
+                    $('.wsl-error-message').html(errorHtml).show();
+                    return;
+                }
+                
+                // Add a new row to the table
+                var newRow = '<tr data-code="' + code + '">';
+                newRow += '<td>';
+                newRow += '<input type="hidden" name="wsl_currencies[' + code + '][code]" value="' + code + '">';
+                newRow += code;
+                newRow += '</td>';
+                newRow += '<td>';
+                newRow += '<input type="text" name="wsl_currencies[' + code + '][name]" value="' + name + '">';
+                newRow += '</td>';
+                newRow += '<td>';
+                newRow += '<input type="checkbox" name="wsl_currencies[' + code + '][enabled]" value="1"' + (enabled ? ' checked' : '') + '>';
+                newRow += '</td>';
+                newRow += '<td>';
+                
+                // If setting as default, uncheck all other defaults
+                if (isDefault) {
+                    $('#wsl-currencies-list input[name="wsl_default_currency"]').prop('checked', false);
+                    newRow += '<input type="radio" name="wsl_default_currency" value="' + code + '" checked>';
+                } else {
+                    newRow += '<input type="radio" name="wsl_default_currency" value="' + code + '">';
+                }
+                
+                newRow += '</td>';
+                newRow += '</tr>';
+                
+                $('#wsl-currencies-list').append(newRow);
+                
+                // Close modal
+                $('#wsl-add-currency-modal').hide();
+            });
+            
+            // Force uppercase for currency code input
+            $('#wsl-new-currency-code').on('input', function() {
+                this.value = this.value.toUpperCase();
+            });
+        });
+        </script>
+        <?php
+        
+        echo '</div>'; // .wrap
     }
 
     /**
@@ -2797,56 +2894,6 @@ class WSL_Admin {
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
-            
-            <style>
-                .wsl-country-card {
-                    background: #fff;
-                    border: 1px solid #ddd;
-                    border-radius: 3px;
-                    margin-bottom: 20px;
-                    padding: 15px;
-                    position: relative;
-                }
-                .wsl-country-card-header {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    margin-bottom: 15px;
-                    border-bottom: 1px solid #eee;
-                    padding-bottom: 10px;
-                }
-                .wsl-country-card-header h3 {
-                    margin: 0;
-                }
-                .wsl-carrier-option {
-                    margin-bottom: 15px;
-                }
-                .wsl-carrier-services {
-                    margin-left: 25px;
-                    padding: 10px;
-                    background: #f9f9f9;
-                    border-radius: 3px;
-                }
-                .wsl-carrier-services h4 {
-                    margin-top: 0;
-                }
-                .wsl-service-options label {
-                    display: inline-block;
-                    margin-right: 15px;
-                    margin-bottom: 5px;
-                }
-                .wsl-country-selector {
-                    margin-bottom: 20px;
-                }
-                .wsl-empty-notice {
-                    padding: 20px;
-                    background: #f9f9f9;
-                    border-left: 4px solid #ddd;
-                }
-                .wsl-no-carriers-notice {
-                    color: #d63638;
-                }
-            </style>
             
             <!-- JavaScript for the country mappings functionality -->
             <script type="text/javascript">
@@ -3262,5 +3309,80 @@ class WSL_Admin {
         
         wp_send_json_success($filtered_services);
         exit;
+    }
+
+    /**
+     * Enqueue admin scripts and styles
+     */
+    public function enqueue_admin_scripts($hook) {
+        // Get base URL for plugin
+        $base_url = plugin_dir_url(dirname(__FILE__));
+        
+        // Load common CSS on all admin pages
+        wp_enqueue_style(
+            'wsl-admin-common',
+            $base_url . 'admin/css/admin-common.css',
+            array(),
+            filemtime(plugin_dir_path(dirname(__FILE__)) . 'admin/css/admin-common.css')
+        );
+        
+        // Only load specific CSS for our plugin pages
+        if (strpos($hook, 'wsl-shipping-labels') !== false || 
+            strpos($hook, 'wsl-create-label') !== false || 
+            strpos($hook, 'wsl-settings') !== false) {
+            
+            // Determine the current tab
+            $current_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'general';
+            
+            // Load tab-specific CSS
+            switch ($current_tab) {
+                case 'general':
+                    wp_enqueue_style(
+                        'wsl-admin-tab-general',
+                        $base_url . 'admin/css/admin-tab-general.css',
+                        array('wsl-admin-common'),
+                        filemtime(plugin_dir_path(dirname(__FILE__)) . 'admin/css/admin-tab-general.css')
+                    );
+                    break;
+                    
+                case 'currencies':
+                    wp_enqueue_style(
+                        'wsl-admin-tab-currencies',
+                        $base_url . 'admin/css/admin-tab-currencies.css',
+                        array('wsl-admin-common'),
+                        filemtime(plugin_dir_path(dirname(__FILE__)) . 'admin/css/admin-tab-currencies.css')
+                    );
+                    break;
+                    
+                case 'packages':
+                    wp_enqueue_style(
+                        'wsl-admin-tab-packages',
+                        $base_url . 'admin/css/admin-tab-packages.css',
+                        array('wsl-admin-common'),
+                        filemtime(plugin_dir_path(dirname(__FILE__)) . 'admin/css/admin-tab-packages.css')
+                    );
+                    break;
+                    
+                case 'countries':
+                    wp_enqueue_style(
+                        'wsl-admin-tab-countries',
+                        $base_url . 'admin/css/admin-tab-countries.css',
+                        array('wsl-admin-common'),
+                        filemtime(plugin_dir_path(dirname(__FILE__)) . 'admin/css/admin-tab-countries.css')
+                    );
+                    break;
+            }
+            
+            // Enqueue scripts needed for all tabs
+            wp_enqueue_script('jquery');
+            wp_enqueue_script('jquery-ui-core');
+            wp_enqueue_script('jquery-ui-tabs');
+        }
+        
+        // Redirect from old currencies page
+        if ($hook == 'shipping-labels_page_wsl-currencies') {
+            wp_redirect(admin_url('admin.php?page=wsl-settings&tab=currencies'));
+            exit;
+        }
     }
 }
